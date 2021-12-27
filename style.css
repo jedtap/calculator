@@ -37,6 +37,7 @@ body{
 
 .bottom{
     overflow-wrap: anywhere;
+    min-height: 52px;
     text-align: right;
 }
 
@@ -69,4 +70,8 @@ button:hover {
 
 button:active {
     background-color: #ECE5E5;
+}
+
+button:disabled{
+    background-color: #d8d1d19b;
 }
