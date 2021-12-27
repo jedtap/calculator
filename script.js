@@ -16,6 +16,9 @@ function operate(){
             answer = +input;
             break;
     }
+    if(prevSymbol == null) upper.textContent = `${answer} ${symbol} `;
+    else if (symbol == "=") upper.textContent = `${+prevAns} ${prevSymbol} ${+input} =`;
+    else upper.textContent = `${answer} ${prevSymbol} `;
     bottom.textContent = +answer;
     
     prevAns     = +answer;
@@ -30,6 +33,7 @@ let symbol      = null;
 let prevSymbol  = null;
 let newNumber   = true;
 
+const upper     = document.querySelector(".upper");
 const bottom    = document.querySelector(".bottom");
 const clear     = document.querySelector(".clear");
 const back      = document.querySelector(".back");
@@ -60,7 +64,8 @@ op.forEach((op) => {
 
 //Event listener for the clear button
 clear.addEventListener("click", () => {
-    bottom.textContent = 0;
+    upper.textContent   = "";
+    bottom.textContent  = 0;
     input       = null;
     answer      = null;
     prevAns     = null;
