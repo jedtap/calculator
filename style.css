@@ -15,36 +15,32 @@ body{
 }
 
 .display{
-    width: 439px;
+    width: 419px;
     background-color: #ECE5E5;
-    margin: 0px;
-    padding: 30px 0;
-    margin-bottom: 15px;
+    margin: 0 0 15px 0;
+    padding: 30px 10px;
     border: 3px solid #37251bb9;
+    border-radius: 10px;
     display: flex;
     flex-flow: column wrap;
     align-items: flex-end;
     justify-content: center;
-    border-radius: 10px;
 }
 
 .top{
     font-size: 20px;
-    padding: 0 10px;
+    min-height: 23px;
+    overflow-wrap: anywhere;
+    text-align: right;
     color: #37251bdc;
 }
 
 .bottom{
-    padding: 0 10px;
     overflow-wrap: anywhere;
-    display: flex;
-    flex-flow: row wrap;
-    max-width: auto;
-   
+    text-align: right;
 }
 
 .container{
-   /* border: 5px solid black;*/
     width: 445px;
     height: 435px;
     display: flex;
@@ -65,4 +61,12 @@ button{
 
 .clear{
     width: 330px;
+}
+
+button:hover {
+    background-color: #d8d1d1;
+}
+
+button:active {
+    background-color: #ECE5E5;
 }

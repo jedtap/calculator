@@ -1,60 +1,61 @@
-function add(a,b){
-    return a + b;
-}
+function operate(){
+    newNumber = true;
 
-function subtract(a,b){
-    return a - b;
-}
 
-function multiply(a,b){
-    return a*b;
-}
-
-function divide(a,b){
-    return a/b;
-}
-
-function operate(operator){
-    if (!prevInput){
-        prevInput = +input;
-        input = 0;
+    switch(symbol){
+        case "+":
+            answer = prevAns + +input;
+            break;
+     /*   case "–":
+            answer = prevAns - +input;
+            break;    
+        case "x":
+            if(firstPass){
+                firstPass = false;
+                prevAns = 1;
+            }
+            answer = prevAns * +input;
+            break;
+        case "÷":
+            if(firstPass){
+                firstPass = false;
+                prevAns = 1;
+            }
+            answer = prevAns / +input;
+            break;*/
     }
-    else{
-        input = +input;
-        switch(operator){
-            case "+":
-                answer = add(prevInput,input);
-                break;
-            case "-":
-                answer = subtract(prevInput,input);
-                break;
-            case "x":
-                answer = multiply(prevInput,input);
-                break;
-            case "/":
-                answer = divide(prevInput,input);
-                break;
-        }
-        display.textContent = answer;
-    }
+    bottom.textContent = +answer;
+    prevAns = +answer;
 }
 
-let input = 0;
-let prevInput;
-let answer = 0;
-const display   = document.querySelector(".display");
-const container = document.querySelector(".container");
+let firstPass = true;
+let input = null;
+let prevAns = null;
+let answer = null;
+let symbol = null;
+
+const bottom    = document.querySelector(".bottom");
 const num       = document.querySelectorAll(".num");
-const operators = document.querySelectorAll(".operator");
+const op        = document.querySelectorAll(".op");
+let newNumber = true;
 
-num.forEach( (num) => {
+
+//Event listener of number keys
+num.forEach((num) => {
     num.addEventListener("click", () => {
+        if(newNumber){
+            newNumber = false;
+            input = 0;
+        }
         input += num.textContent;
-        display.textContent = input;
+        bottom.textContent = +input;
     });
-
 });
 
-operators.forEach( (operator) => {
-    operator.addEventListener("click", () => operate(operator.textContent));
+//Event listener of operators
+op.forEach((op) => {
+    op.addEventListener("click", () => {
+        symbol = op.textContent;
+        operate();
+    });
 });
